@@ -1,0 +1,101 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Background com degradê */
+body {
+  background: linear-gradient(135deg, #74ebd5, #9face6);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Container principal do formulário */
+.container {
+  background-color: rgba(255, 255, 255, 0.75);
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Título */
+.container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Labels e Inputs */
+.container label {
+  font-weight: 600;
+  color: #444;
+}
+
+.container input[type="text"],
+.container input[type="email"],
+.container input[type="number"],
+.container input[type="date"],
+.container input[type="password"] {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+  width: 100%;
+  transition: border 0.3s ease;
+}
+
+.container input:focus {
+  border-color: #6a5acd;
+}
+
+/* Fieldsets */
+.container fieldset {
+  border: none;
+  margin: 10px 0;
+  display: flex;
+  gap: 8px;
+}
+
+.container fieldset legend {
+  margin-bottom: 5px;
+  color: #333;
+
+}
+
+/* Botão */
+.container button {
+  background-color: #6a5acd;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.container button:hover {
+  background-color: #5848c2;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+
+  .container h1 {
+    font-size: 1.5rem;
+  }
+}

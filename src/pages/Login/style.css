@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #74ebd5, #9face6);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Reaproveita o container principal */
+.container {
+  background-color: rgba(255, 255, 255, 0.75);
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Título do login */
+.container h1 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Inputs padrão */
+.container input[type="email"],
+.container input[type="text"],
+.container input[type="password"] {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.container input:focus {
+  border-color: #6a5acd;
+}
+
+/* Botão */
+.container button {
+  background-color: #6a5acd;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.container button:hover {
+  background-color: #5848c2;
+}
+
+/* Texto com link */
+.container label {
+  font-size: 0.9rem;
+  color: #444;
+  text-align: center;
+}
+
+.container label span a {
+  color: #6a5acd;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.container label span a:hover {
+  text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+
+  .container h1 {
+    font-size: 1.5rem;
+  }
+}

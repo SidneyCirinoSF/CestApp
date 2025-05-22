@@ -53,6 +53,7 @@ body {
   outline: none;
   width: 100%;
   transition: border 0.3s ease;
+  color: #444;
 }
 
 .container input:focus {
@@ -70,7 +71,7 @@ body {
 .container fieldset legend {
   margin-bottom: 5px;
   color: #333;
-
+  
 }
 
 /* Botão */

@@ -1,14 +1,14 @@
 import "./style.css";
 import Sidebar from "../../components/SideBar";
 
-function Home() {
+function Inscritos() {
   return (
     <>
       <>
         <div className="flex fixed top-0 left-0 h-screen bg-gray-100">
           <Sidebar />
           <div className="flex-1 p-4 h-screen w-screen bg-[linear-gradient(135deg,_#74ebd5,_#9face6)]">
-            INDICATIVO DE INSCRIÇÕES, APROVADOS E REPROVADOS 
+            PESQUISAR INSCRITOS
             </div>
         </div>
       </>
@@ -16,4 +16,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Inscritos;

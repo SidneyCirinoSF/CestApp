@@ -37,7 +37,7 @@ export default function Sidebar() {
   const [open, setOpen] = useState(true)
 
   return (
-    <nav className={`shadow-md p-2 flex flex-col duration-500 bg-blue-300 text-white ${open ? 'w-60' : 'w-16'}`}>
+    <nav className={`shadow-md p-2 flex flex-col duration-500 bg-black bg-opacity-10 text-white ${open ? 'w-40' : 'w-10'}`}>
 
       {/* Header */}
       <div className=' px-3 py-2 h-20 flex justify-between items-center'>

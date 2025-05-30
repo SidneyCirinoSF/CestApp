@@ -1,5 +1,5 @@
 import Sidebar from "../../components/SideBar";
-import Stats from "../../components/stats";
+import Stats from "../../components/Stats";
 import "./style.css";
 
 function Home() {

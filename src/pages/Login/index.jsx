@@ -12,7 +12,7 @@ function Login() {
 
                 <input id="cpf" name="cpf" type="text" placeholder="CPF (apenas os números)" required />
 
-                <button>Entrar</button>
+                <button><Link to="/home">Entrar</Link></button>
 
                 <label htmlFor="naoTemConta">Ainda não é cadastrado? <span><Link to="/cadastro">Registre-se</Link></span></label>
 

@@ -98,7 +98,7 @@ function Cadastro() {
       setSuccessMessage("");
       setErrorMessage("");
       navigate("/home");
-    }, 2000); // 4 segundos
+    }, 2000); 
     return () => clearTimeout(timer);
   }
 }, [successMessage, errorMessage]);

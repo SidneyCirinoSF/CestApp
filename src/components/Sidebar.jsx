@@ -37,7 +37,7 @@ export default function Sidebar() {
   const [open, setOpen] = useState(true)
 
   return (
-    <nav className={`shadow-md p-2 flex flex-col duration-500 bg-black bg-opacity-10 text-white ${open ? 'w-40' : 'w-10'}`}>
+    <nav className={`shadow-md p-2 flex flex-col duration-500 bg-white bg-opacity-10 text-black ${open ? 'w-40' : 'w-10'}`}>
 
       {/* Header */}
       <div className=' px-3 py-2 h-20 flex justify-between items-center'>
@@ -51,12 +51,12 @@ export default function Sidebar() {
         {
           menuItems.map((item, index) => {
             return (
-              <li key={index} className='px-3 py-3 my-3 hover:bg-blue-800 rounded-md duration-300 cursor-pointer flex gap-2 items-center relative group'>
+              <li key={index} className='px-3 py-3 my-3 hover:bg-gray-500 rounded-md duration-300 cursor-pointer flex gap-2 items-center relative group'>
                 <div><Link to={item.to}>{item.icons}</Link></div>
-                <p className={`${!open && 'w-0 translate-x-24'} duration-500 overflow-hidden text-white`}>
+                <p className={`${!open && 'w-0 translate-x-24'} duration-500 overflow-hidden text-black`}>
                   <Link to={item.to}>{item.label}</Link>
                 </p>
-                <p className={`${open && 'hidden'} absolute left-32 shadow-md rounded-md w-0 p-0 text-white bg-blue-800 duration-100 overflow-hidden group-hover:w-fit group-hover:p-2 group-hover:left-16`}>
+                <p className={`${open && 'hidden'} absolute left-32 shadow-md rounded-md w-0 p-0 text-white bg-gray-500 duration-100 overflow-hidden group-hover:w-fit group-hover:p-2 group-hover:left-16`}>
                   <Link to={item.to}>{item.label}</Link>
                 </p>
               </li>
@@ -66,10 +66,13 @@ export default function Sidebar() {
       </ul>
       {/* footer */}
       <div className='flex items-center gap-2 px-3 py-2'>
-        <div><FaUserCircle size={30} /></div>
+        <div><Link to="/home/settings" ><FaUserCircle size={30} /></Link></div>
         <div className={`leading-5 ${!open && 'w-0 translate-x-24'} duration-500 overflow-hidden`}>
+          <Link to="/home/settings">
           <p>ADMIN</p>
           <span className='text-xs'>admin@cestapp.com</span>
+          
+          </Link>
 
         </div>
       </div>

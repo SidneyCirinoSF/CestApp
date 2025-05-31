@@ -1,5 +1,6 @@
 import { stats } from "../data/clientData";
-import MedidorGrafico from "./medidorGrafico";
+import MedidorGrafico from "./MedidorGrafico";
+
 
 const Stats = () => {
   return (

@@ -39,11 +39,11 @@ function Cadastro() {
       cidade: inputCity.current.value,
       bairro: inputDistrict.current.value,
       genero: inputGender,
-      provedorF: inputProvider,
+      provedor: inputProvider,
       renda: inputIncomeFamily.current.value,
-      qtPessoasC: inputPeopleLive.current.value,
-      programaGov: inputGovProgram,
-      nomeGov: inputGovProgramYes.current.value,
+      tamanhoFam: inputPeopleLive.current.value,
+      outrosProgramas: inputGovProgram,
+      quaisProgramas: inputGovProgramYes.current.value,
       estadoUser: estadoUsers
     });
 

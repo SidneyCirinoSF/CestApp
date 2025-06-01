@@ -1,5 +1,5 @@
 // Grid.jsx
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { AgGridReact } from "ag-grid-react";
 import { ModuleRegistry } from "ag-grid-community";
 import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
@@ -23,6 +23,14 @@ function Grid() {
         
     ]);
 
+    const defaultColDef = useMemo( ()=> {
+      return {
+        flex: 1,
+        filter: true,
+        floatingFilter: true
+      }
+    });
+
     // Column Definitions: definição das colunas que serão mostradas.
     const [colDefs, setColDefs] = useState([
         { field: "nome" },
@@ -36,7 +44,10 @@ function Grid() {
         { field: "bairro" },
         { field: "genero" },
         { field: "provedor" },
-        { field: "renda" },
+        { 
+          field: "renda",
+          valueFormatter: p => "R$" + p.value.toLocaleString()
+        },
         { field: "tamanhoFam" },        
         { field: "outrosProgramas" },
         { field: "quaisProgramas" }
@@ -45,7 +56,7 @@ function Grid() {
 
   return (
     <div className='ag-theme-quartz' style={{height: 800, padding: 10}}>
-      <AgGridReact rowData={rowData} columnDefs={colDefs} />
+      <AgGridReact rowData={rowData} columnDefs={colDefs} defaultColDef={defaultColDef} pagination={true} paginationPageSize={10} paginationPageSizeSelector={[10,20]} />
     </div>
   );
 };

@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import "./style.css";
 import "../services/api";
 //npm install react-imask para a seguinte lib=>
@@ -25,6 +24,7 @@ function Cadastro() {
   const inputIncomeFamily = useRef()
   const inputPeopleLive = useRef()
   const inputGovProgramYes = useRef()
+  const	estadoUsers = "aguardando validacao"
 
   async function createUsers() {
     try {
@@ -43,7 +43,8 @@ function Cadastro() {
       renda: inputIncomeFamily.current.value,
       qtPessoasC: inputPeopleLive.current.value,
       programaGov: inputGovProgram,
-      nomeGov: inputGovProgramYes.current.value
+      nomeGov: inputGovProgramYes.current.value,
+      estadoUser: estadoUsers
     });
 
     setSuccessMessage("Usuário cadastrado com sucesso!");
@@ -81,7 +82,7 @@ function Cadastro() {
             cursor: "pointer"
           }}
         >
-          ×
+          × 
         </button>
       </div>
     );
@@ -97,7 +98,6 @@ function Cadastro() {
     const timer = setTimeout(() => {
       setSuccessMessage("");
       setErrorMessage("");
-      navigate("/home");
     }, 2000); 
     return () => clearTimeout(timer);
   }

@@ -26,7 +26,7 @@ const menuItems = [
   {
     icons: <CiSettings size={30} />,
     label: "Settings",
-    to: "/home/settings"
+    to: "/home/alterar"
   },
 ]
 

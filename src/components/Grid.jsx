@@ -88,7 +88,7 @@ function Grid() {
 
   const [colDefs] = useState([
     { field: "nome" },
-    { field: "idade" },
+    { field: "dataNasc" },
     { field: "email" },
     { field: "telefone" },
     { field: "cpf" },
@@ -127,6 +127,7 @@ function Grid() {
       try {
         const response = await api.get("/api/users");
         setRowData(response.data);
+        console.log(response)
       } catch (err) {
         setError("Erro ao carregar dados");
         console.error("Erro na requisição:", err);

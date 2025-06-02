@@ -4,25 +4,22 @@ import "./style.css";
 import api from "../services/api";
 
 function Login() {
-  const inputEmail = useRef();
-  const inputCpf = useRef();
+  const [inputEmail, setInputEmail] = useState('');
+  const [inputCpf, setInputCpf] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const body = {cpf : inputCpf}
 
   async function getUserValidate(e) {
     e.preventDefault();
     try {
-      const response = await api.get("/api/users");
+      const response = await api.post("/api/user/login", body);
       const users = response.data;
+      console.log(users)
 
-      const userFound = users.find(
-        (user) =>
-          user.email === inputEmail.current.value &&
-          user.cpf === inputCpf.current.value &&
-          user.funcionario === "true"
-      );
-
-      if (userFound) {
+      if (users.funcionario) {
         setIsLoggedIn(true);
+        localStorage.setItem('userid', users.userid)
       } else {
         alert("E-mail ou CPF incorretos.");
       }
@@ -41,9 +38,9 @@ function Login() {
             <form className="container">
                 <h1>LOGIN</h1>
 
-                <input id="email" name="email" type="email" placeholder="E-mail"  ref={inputEmail}required />
+                <input id="email" name="email" type="email" placeholder="E-mail" onChange={(e) => setInputEmail(e.target.value)} required />
 
-                <input id="cpf" name="cpf" type="text" placeholder="CPF (apenas os números)"  ref={inputCpf} required />
+                <input id="cpf" name="cpf" type="text" placeholder="CPF (apenas os números)"  onChange={(e) => setInputCpf(e.target.value)} required />
 
                 <button onClick={getUserValidate}>Entrar</button>
 

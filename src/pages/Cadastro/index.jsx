@@ -26,6 +26,16 @@ function Cadastro() {
   const	estadoUsers = "aguardando validacao"
   const funcionario = "false"
 
+  useEffect(() => {
+    if (successMessage || errorMessage) {
+      const timer = setTimeout(() => {
+        setSuccessMessage("");
+        setErrorMessage("");
+      }, 2000); 
+      return () => clearTimeout(timer);
+    }
+  }, [successMessage, errorMessage]);
+
   async function createUsers() {
     try {
     await api.post("/api/user", {
@@ -93,17 +103,6 @@ function Cadastro() {
     setSuccessMessage("");
     setErrorMessage("");
   }
-
-  useEffect(() => {
-  if (successMessage || errorMessage) {
-    const timer = setTimeout(() => {
-      setSuccessMessage("");
-      setErrorMessage("");
-    }, 2000); 
-    return () => clearTimeout(timer);
-  }
-}, [successMessage, errorMessage]);
-
 
   return ( 
     

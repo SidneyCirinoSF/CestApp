@@ -1,11 +1,20 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef} from "react";
 import { IMaskInput } from "react-imask";
-
+import { useNavigate } from "react-router-dom";
+import api from '../services/api';
 
 export default function UpdateData() {
   const [campoParaAlterar, setCampoParaAlterar] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate()
+  
+  const handleLogout = () => {
+    localStorage.removeItem("userid")
+    navigate("/login");
+  }
+
+  const BackHome = () => {
+    navigate("/home");
+  }
 
   const inputName = useRef();
   const inputBirthDate = useRef();
@@ -24,7 +33,7 @@ export default function UpdateData() {
   const [inputProvider, setInputProvider] = useState("");
   const [inputGovProgram, setInputGovProgram] = useState("");
 
-  const handleUpdate = () => {
+  const handleUpdate = async () => {
     const dataToUpdate = {};
 
     if (campoParaAlterar === "nome") dataToUpdate.nome = inputName.current.value;
@@ -43,24 +52,21 @@ export default function UpdateData() {
     if (campoParaAlterar === "programaGoverno") dataToUpdate.programaGoverno = inputGovProgram;
     if (campoParaAlterar === "seSimProg") dataToUpdate.seSimProg = inputGovProgramYes.current.value;
 
-    // Aqui você pode enviar dataToUpdate para o backend (ex.: usando fetch ou axios)
-    console.log("Dados atualizados:", dataToUpdate);
+    try{
+      const userid = localStorage.getItem("userid")
+      const response = await api.put(`http://localhost:3000/api/user/${userid}`, dataToUpdate)
+      alert(response.data.message)
 
-    // Exemplo de sucesso:
-    setSuccessMessage("Dados atualizados com sucesso!");
-    setErrorMessage(""); // Limpa o erro
-  };
-
-  const handleCloseToast = () => {
-    setSuccessMessage("");
-    setErrorMessage("");
+    }catch(error){
+      alert("Erro na Atualização!")
+    }
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
-  <h1 className="text-2xl font-bold text-gray-800 mb-6">Alterar Dados</h1>
+    <div className="bg-white p-6 rounded-lg shadow-lg w-100 flex flex-col gap-4">
+  <h1 className="text-2xl text-center font-bold text-gray-800 mb-6">Alterar Dados</h1>
 
-  <div className="mb-6">
+  <div className="mb-10">
     <label htmlFor="campoEscolhido" className="block text-sm font-medium text-gray-700 mb-2">
       Escolha o campo a alterar:
     </label>
@@ -92,7 +98,7 @@ export default function UpdateData() {
   <form className="space-y-4">
     {campoParaAlterar === "nome" && (
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Nome</label>
+        <label className="block text-sm font-medium text-gray-700 mb-4">Nome</label>
         <input 
           type="text" 
           ref={inputName}
@@ -103,7 +109,7 @@ export default function UpdateData() {
     
     {campoParaAlterar === "dataNasc" && (
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Data de nascimento</label>
+        <label className="block text-sm font-medium text-gray-700 mb-4">Data de nascimento</label>
         <input 
           type="date" 
           ref={inputBirthDate}
@@ -114,7 +120,7 @@ export default function UpdateData() {
     
     {campoParaAlterar === "email" && (
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
+        <label className="block text-sm font-medium text-gray-700 mb-4">E-mail</label>
         <input 
           type="email" 
           ref={inputEmail}
@@ -125,7 +131,7 @@ export default function UpdateData() {
     
     {campoParaAlterar === "telefone" && (
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Telefone</label>
+        <label className="block text-sm font-medium text-gray-700 mb-4">Telefone</label>
         <IMaskInput 
           mask="(00) 00000-0000" 
           ref={inputPhone}
@@ -136,7 +142,7 @@ export default function UpdateData() {
     
     {campoParaAlterar === "cpf" && (
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">CPF</label>
+        <label className="block text-sm font-medium text-gray-700 mb-4">CPF</label>
         <IMaskInput 
           mask="000.000.000-00" 
           ref={inputCpf}
@@ -147,7 +153,7 @@ export default function UpdateData() {
     
     {campoParaAlterar === "endereco" && (
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Endereço</label>
+        <label className="block text-sm font-medium text-gray-700 mb-4">Endereço</label>
         <input 
           type="text" 
           ref={inputAddress}
@@ -158,7 +164,7 @@ export default function UpdateData() {
     
     {campoParaAlterar === "cep" && (
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">CEP</label>
+        <label className="block text-sm font-medium text-gray-700 mb-4">CEP</label>
         <IMaskInput 
           mask="00000-000" 
           ref={inputCep}
@@ -169,7 +175,7 @@ export default function UpdateData() {
     
     {campoParaAlterar === "cidade" && (
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Cidade</label>
+        <label className="block text-sm font-medium text-gray-700 mb-4">Cidade</label>
         <input 
           type="text" 
           ref={inputCity}
@@ -180,7 +186,7 @@ export default function UpdateData() {
     
     {campoParaAlterar === "bairro" && (
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Bairro</label>
+        <label className="block text-sm font-medium text-gray-700 mb-4">Bairro</label>
         <input 
           type="text" 
           ref={inputDistrict}
@@ -251,7 +257,7 @@ export default function UpdateData() {
     
     {campoParaAlterar === "renda" && (
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Renda familiar</label>
+        <label className="block text-sm font-medium text-gray-700 mb-4">Renda familiar</label>
         <div className="relative rounded-md shadow-sm">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <span className="text-gray-500 sm:text-sm">R$</span>
@@ -267,7 +273,7 @@ export default function UpdateData() {
     
     {campoParaAlterar === "moradoresCasa" && (
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Moradores na casa</label>
+        <label className="block text-sm font-medium text-gray-700 mb-4">Moradores na casa</label>
         <input 
           type="number" 
           ref={inputPeopleLive}
@@ -308,7 +314,7 @@ export default function UpdateData() {
     
     {campoParaAlterar === "seSimProg" && (
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Quais programas?</label>
+        <label className="block text-sm font-medium text-gray-700 mb-4">Quais programas?</label>
         <input 
           type="text" 
           ref={inputGovProgramYes}
@@ -319,12 +325,17 @@ export default function UpdateData() {
 
     <div className="pt-4">
       <button 
-        type="button" 
-        onClick={handleUpdate}
-        className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-      >
+        type="button" className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mb-10 " onClick={handleUpdate}>
         Salvar Alteração
       </button>
+
+      <button className="w-full mb-4 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 " onClick={BackHome}>
+            Voltar
+          </button>
+
+      <button className="w-full mb-4 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 " onClick={handleLogout}>
+            Sair
+          </button>
     </div>
   </form>
 </div>

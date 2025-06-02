@@ -10,16 +10,20 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Inscritos from './pages/Home/inscritos'
 import Settings from './pages/Home/settings'
+import UpdateData from './pages/Alterar'
+import LandingPage from './pages/LandingPage'
 
 // instalar o tailwind. Passo a passo: https://tailwindcss.com/docs/installation/using-vite
 
 const router = createBrowserRouter([
-  { path:"/", element:<Login />},
+  { path:"/", element:<LandingPage />},
   { path:"/login", element:<Login />},
   { path:"/cadastro", element:<Cadastro />},
   { path:"/home", element:<Home />},
   { path:"/home/inscritos", element:<Inscritos />},
-  { path:"/home/settings", element:<Settings />}
+  { path:"/home/settings", element:<Settings />},
+  { path:"/pages/Alterar", element:<UpdateData />},
+  { path:"/landingpage", element:<LandingPage />}
 ])
 
 createRoot(document.getElementById('root')).render(

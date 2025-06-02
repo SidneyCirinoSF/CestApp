@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from "react";
 import "./style.css";
-import "../services/api";
 //npm install react-imask para a seguinte lib=>
 import { IMaskInput } from "react-imask";
 import api from "../services/api";
@@ -25,6 +24,7 @@ function Cadastro() {
   const inputPeopleLive = useRef()
   const inputGovProgramYes = useRef()
   const	estadoUsers = "aguardando validacao"
+  const funcionario = "false"
 
   async function createUsers() {
     try {
@@ -44,7 +44,8 @@ function Cadastro() {
       tamanhoFam: inputPeopleLive.current.value,
       outrosProgramas: inputGovProgram,
       quaisProgramas: inputGovProgramYes.current.value,
-      estadoUser: estadoUsers
+      estadoUser: estadoUsers,
+      funcionario: funcionario
     });
 
     setSuccessMessage("Usuário cadastrado com sucesso!");

@@ -20,14 +20,64 @@ function Grid() {
     try {
       await api.delete(`/api/user/${id}`);
       setRowData((prev) => prev.filter((row) => row._id !== id));
-      setSuccessMessage("Usuário cadastrado com sucesso!");
+      setSuccessMessage("Usuário removido com sucesso!");
 
     } catch (err) {
       setError("Erro ao deletar usuário");
       console.error("Erro na deleção:", err);
-      setSuccessMessage("Usuário cadastrado com sucesso!");
+      setErrorMessage("Erro ao remover usuário. Tente novamente.");
     }
   };
+
+  function Toast({ message, type, onClose }) {
+    if (!message) return null;
+
+    const background = type === "success" ? "#4BB543" : "#FF3333";
+
+    return (
+      <div style={{
+        position: "fixed",
+        top: 20,
+        right: 20,
+        backgroundColor: background,
+        color: "#fff",
+        padding: "12px 20px",
+        borderRadius: 5,
+        boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
+        zIndex: 9999,
+      }}>
+        {message}
+        <button 
+          onClick={onClose} 
+          style={{
+            marginLeft: 10,
+            background: "transparent",
+            border: "none",
+            color: "#fff",
+            fontWeight: "bold",
+            cursor: "pointer"
+          }}
+        >
+          × 
+        </button>
+      </div>
+    );
+  }
+
+  function handleCloseToast() {
+    setSuccessMessage("");
+    setErrorMessage("");
+  }
+
+  useEffect(() => {
+  if (successMessage || errorMessage) {
+    const timer = setTimeout(() => {
+      setSuccessMessage("");
+      setErrorMessage("");
+    }, 2000); 
+    return () => clearTimeout(timer);
+  }
+}, [successMessage, errorMessage]);
 
   const defaultColDef = useMemo(() => ({
     flex: 1,
@@ -100,6 +150,8 @@ function Grid() {
         paginationPageSize={10}
         paginationPageSizeSelector={[10, 20]}
       />
+    <Toast message={successMessage} type="success" onClose={handleCloseToast} />
+    <Toast message={errorMessage} type="error" onClose={handleCloseToast} />
     </div>
   );
 }

@@ -1,12 +1,109 @@
-# React + Vite
+# 🧺 CestApp
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+CestApp é um sistema completo desenvolvido em **React + Vite** com foco no **cadastro de pessoas para recebimento de cestas básicas** e **gerenciamento eficiente dessas informações** por parte da ONG responsável.
 
-Currently, two official plugins are available:
+## 🔎 Visão Geral
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+O sistema possui as seguintes seções:
 
-## Expanding the ESLint configuration
+- ✅ **Landing Page** — Informações públicas sobre a ONG, missão, contato e localização.
+- 🔐 **Tela de Login** — Acesso restrito aos funcionários autorizados.
+- 📝 **Tela de Cadastro** — Cadastro de pessoas que irão receber as cestas básicas.
+- 📊 **Dashboard**
+  - **Home** — Resumo geral e métricas.
+  - **Search** — Busca de pessoas cadastradas.
+  - **Settings** — Configurações de conta do funcionário.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+### Frontend
+
+- **React** – Biblioteca para construção de interfaces.
+- **Vite** – Ferramenta de build rápida para projetos React.
+- **Tailwind CSS** – Framework utilitário para estilização.
+- **Axios** – Cliente HTTP para comunicação com o backend.
+- **AG Grid** – Grade de dados avançada para tabelas interativas.
+- **ApexCharts** – Gráficos interativos para dashboards.
+- **Font Awesome** – Ícones vetoriais para UI moderna.
+- **React Icons** – Biblioteca alternativa de ícones.
+- **React Router DOM** – Navegação entre páginas.
+- **React IMask** – Máscaras de input para formulários.
+
+### Backend
+
+- **Node.js** – Runtime JavaScript para execução no servidor.
+- **Express** – Framework web para construção de APIs.
+- **CORS** – Middleware para controle de acesso entre domínios.
+- **MongoDB** – Banco de dados NoSQL para persistência de dados.
+
+---
+
+## 🚀 Instalação e Execução
+
+### Pré-requisitos
+
+- Node.js (versão 18+)
+- MongoDB (em execução local ou na nuvem)
+
+1. **Clone o repositório**
+
+   ```bash
+   git clone https://github.com/SidneyCirinoSF/CestApp
+   cd cestapp
+   ```
+
+   
+
+2. **Instale as dependências**
+
+   ```bash
+   npm install
+   ```
+
+   
+
+3. **Execute o projeto**
+
+   ```bash
+   npm run dev
+   ```
+
+   
+
+4. **Acesse no navegador**
+
+   ```bash
+   http://localhost:5173
+   ```
+
+   
+
+## 📌 Funcionalidades
+
+- Cadastro de usuários (público).
+- Login e autenticação (para funcionários).
+- Visualização de dashboard com métricas.
+- Listagem e busca de pessoas cadastradas.
+- Alteração de configurações da conta de funcionário.
+- Máscaras para CPF, telefone e outros campos.
+- Visualização de dados com gráficos interativos.
+
+
+
+---
+
+## 📬 Contato
+
+Para dúvidas ou sugestões:
+
+- Email: contato@cestapp.org
+- Site: https://www.cestapp.org
+- Instagram: [@cestapp](https://instagram.com/cestapp)
+
+------
+
+## 📄 Licença
+
+Este projeto é licenciado sob a [MIT License](LICENSE).

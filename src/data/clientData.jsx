@@ -20,7 +20,7 @@ export let stats = [
   {
     id: 1,
     title: "Total de inscrições",
-    percentage: 20,  
+    percentage: 100,  
     icon: "/images/inscription.png",
     chartBg: "#A061F6",
   },
